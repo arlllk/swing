@@ -10,6 +10,7 @@ package VentPrincipal;
 import Strings.VenMostrarVocales;
 import Strings.VentUbCaracteres;
 import array.venArray;
+import array.venMatriz;
 import array.venWordsArray;
 import numerico.VenFactorial;
 import numerico.venPrimo;
@@ -35,6 +36,7 @@ class VetMenu extends JFrame implements ActionListener {
 	private final JMenu Array = new JMenu("Arreglos");
 	private final JMenuItem Primer = new JMenuItem("Primer Problema");
 	private final JMenuItem Palabras = new JMenuItem("Palabras");
+	private final JMenuItem Matriz = new JMenuItem("Matrices");
 
 	private VetMenu() {
 		configurarMenu();
@@ -89,6 +91,9 @@ class VetMenu extends JFrame implements ActionListener {
 		this.Palabras.setBackground(new Color(161, 192, 228));
 		this.Palabras.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_P, InputEvent.CTRL_MASK));
 
+		this.Matriz.setBackground(new Color(161, 192, 228));
+		this.Matriz.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_M, InputEvent.CTRL_MASK));
+
 		Strings.add(UbCaracteres);
 		Strings.add(mostrarVocales);
 
@@ -97,6 +102,7 @@ class VetMenu extends JFrame implements ActionListener {
 
 		Array.add(Primer);
 		Array.add(Palabras);
+		Array.add(Matriz);
 
 		barra.add(Strings);
 		barra.add(numerico);
@@ -141,6 +147,12 @@ class VetMenu extends JFrame implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				new venWordsArray().setVisible(true);
+			}
+		});
+		this.Matriz.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				new venMatriz().setVisible(true);
 			}
 		});
 	}
