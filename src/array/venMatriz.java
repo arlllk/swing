@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/*
+ * Formulario nuevo, ventna unica, ingreso de usuario, JPassword field, acceso necesario para abrir el menu,
+ * lista de usuarios y contraseña, matris simple, boton de aceptar y cerrar
+ * */
+
 public class venMatriz extends JFrame implements ActionListener {
     static final int FILAS = 5;
     static final int COLUMNAS = 2;
