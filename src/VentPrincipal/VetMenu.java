@@ -38,7 +38,7 @@ class VetMenu extends JFrame implements ActionListener {
 	private final JMenuItem Palabras = new JMenuItem("Palabras");
 	private final JMenuItem Matriz = new JMenuItem("Matrices");
 
-	private VetMenu() {
+	public VetMenu() {
 		configurarMenu();
 		configurarVentana();
 		listener();

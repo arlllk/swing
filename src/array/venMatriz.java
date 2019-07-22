@@ -7,40 +7,36 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-/*
- * Formulario nuevo, ventna unica, ingreso de usuario, JPassword field, acceso necesario para abrir el menu,
- * lista de usuarios y contraseña, matris simple, boton de aceptar y cerrar
- * */
 
 public class venMatriz extends JFrame implements ActionListener {
-    static final int FILAS = 5;
-    static final int COLUMNAS = 2;
+	private static final int FILAS = 5;
+	private static final int COLUMNAS = 2;
 
-    static final int TAMANNO = FILAS * COLUMNAS;
+	private static final int TAMANNO = FILAS * COLUMNAS;
 
-    JLabel lIngresar = new JLabel("Ingrese el dato N° ", SwingConstants.CENTER);
-    JLabel lSalida = new JLabel("Salida", SwingConstants.CENTER);
-    JLabel lSumMul3 = new JLabel("Suma multiplos de 3: ", SwingConstants.CENTER);
-    JLabel lMul3 = new JLabel("Multiplos de 3: ", SwingConstants.CENTER);
+	private final JLabel lIngresar = new JLabel("Ingrese el dato N° ", SwingConstants.CENTER);
+	private final JLabel lSalida = new JLabel("Salida", SwingConstants.CENTER);
+	private final JLabel lSumMul3 = new JLabel("Suma multiplos de 3: ", SwingConstants.CENTER);
+	private final JLabel lMul3 = new JLabel("Multiplos de 3: ", SwingConstants.CENTER);
 
-    JTextField tfIngresar = new JTextField();
-    JTextArea tfSalida = new JTextArea();
-    JTextField tfSumaMul3 = new JTextField();
-    JTextField tfMul3 = new JTextField();
+	private final JTextField tfIngresar = new JTextField();
+	private final JTextArea tfSalida = new JTextArea();
+	private final JTextField tfSumaMul3 = new JTextField();
+	private final JTextField tfMul3 = new JTextField();
 
-    JButton bMostrar = new JButton("Mostrar");
-    JButton bPregenerado = new JButton("Generar");
-    JLabel lLlenados = new JLabel("Llenados : ");
-    JLabel lRestantes = new JLabel("Restantes : ");
-    String sMatrizCompleta = "";
-    String sSumaMul3 = "";
-    String sMult3 = "";
-    int[][] numeros = new int[5][2];
-    int cantidadLLenado = 0;
-    int posicionFila = 0;
-    int posicionColumna = 0;
-    private JButton bAgregar = new JButton("Agregar");
-    private JButton bLimpiar = new JButton("Limpiar");
+	private final JButton bMostrar = new JButton("Mostrar");
+	private final JButton bPregenerado = new JButton("Generar");
+	private final JLabel lLlenados = new JLabel("Llenados : ");
+	private final JLabel lRestantes = new JLabel("Restantes : ");
+	private final int[][] numeros = new int[5][2];
+	private final JButton bAgregar = new JButton("Agregar");
+	private final JButton bLimpiar = new JButton("Limpiar");
+	private String sMatrizCompleta = "";
+	private String sSumaMul3 = "";
+	private String sMult3 = "";
+	private int cantidadLLenado = 0;
+	private int posicionFila = 0;
+	private int posicionColumna = 0;
 
 
     public venMatriz() {
@@ -219,7 +215,7 @@ public class venMatriz extends JFrame implements ActionListener {
         this.tfSumaMul3.setForeground(col);
     }
 
-    public void mostrarMatriz() {
+	private void mostrarMatriz() {
         for (int[] fila : numeros) {
             for (int numero : fila) {
                 sMatrizCompleta += " " + numero;

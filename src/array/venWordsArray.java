@@ -47,6 +47,7 @@ public class venWordsArray extends JFrame implements ActionListener {
 		dlRestantes = new JLabel(sRestantes, SwingConstants.CENTER);
 		iCantidad = 0;
 		iRestantes = TAMANNO;
+		actualizarContadoresLabel();
 		bSalir.addActionListener(this);
 		bLimpiar.addActionListener(this);
 		bDeshacer.addActionListener(this);
@@ -142,11 +143,23 @@ public class venWordsArray extends JFrame implements ActionListener {
 		}
 	}
 
+	private void actualizarContadoresLabel() {
+		this.sCantidad = "<html>Cantidad: <font color='red'>" + iCantidad + "</font></html>";
+		this.dlCantidad.setText(this.sCantidad);
+		this.sRestantes = "<html>Restantes: <font color='red'>" + iRestantes + "</font></html>";
+		this.dlRestantes.setText(this.sRestantes);
+	}
+
+	private boolean cumpleCondicionesRegex(String str) {
+		return str.matches("(\\b[Mm][A-Za-z0-9]*)|([A-Za-z0-9]*[Oo]\\b)");
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		System.out.println(this.getSize());
 		if(e.getSource() == this.bAgregar) {
 			procesarAgregar();
+			tfIngresar.setText("");
 		}
 		if(e.getSource() == this.bDeshacer) {
 			if(this.aPalabras[0] == null) {
@@ -174,20 +187,22 @@ public class venWordsArray extends JFrame implements ActionListener {
 				this.dispose();
 		}
 		if(e.getSource() == this.bMostrar) {
+			if(iRestantes != 0) {
+				tfSalida.setText("No se han terminado de Ingresar los datos");
+				tfSalida.setForeground(Color.RED);
+			}
 			StringBuilder resultado = new StringBuilder();
 			for(String str : aPalabras) {
-				if(!(str == null))
+				if(str == null)
+					continue;
+				if(cumpleCondicionesRegex(str))
 					resultado.append(str).append(", ");
-
 			}
 			if(resultado.length() > 0)
 				resultado = new StringBuilder(resultado.substring(0, resultado.length() - 2));
 			tfSalida.setText(resultado.toString());
 			tfSalida.setForeground(Color.BLACK);
 		}
-		this.sCantidad = "<html>Cantidad: <font color='red'>" + iCantidad + "</font></html>";
-		this.dlCantidad.setText(this.sCantidad);
-		this.sRestantes = "<html>Restantes: <font color='red'>" + iRestantes + "</font></html>";
-		this.dlRestantes.setText(this.sRestantes);
+		actualizarContadoresLabel();
 	}
 }
